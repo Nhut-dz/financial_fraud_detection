@@ -1,0 +1,26 @@
+# Dữ liệu và artifact (quá lớn, sinh lại bằng script)
+data/*
+!data/.gitkeep
+artifacts/*
+!artifacts/.gitkeep
+*.sqlite
+*.parquet
+*.joblib
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+.env
+.env.local
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
