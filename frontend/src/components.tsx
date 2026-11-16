@@ -1,3 +1,4 @@
+import { featureDisplayName } from './api'
 import type { Reason, RiskLevel } from './api'
 
 const RISK_TEXT: Record<RiskLevel, string> = {
@@ -36,7 +37,9 @@ export function ReasonList({ reasons }: { reasons: Reason[] }) {
       <ol className="reasons">
         {reasons.map((r) => (
           <li key={r.feature}>
-            <strong>{r.label}</strong> = {r.value.toLocaleString('en-US', { maximumFractionDigits: 2 })}
+            {r.feature.startsWith('cat_')
+              ? <strong>{featureDisplayName(r.feature)}</strong>
+              : <><strong>{r.label}</strong> = {r.value.toLocaleString('en-US', { maximumFractionDigits: 2 })}</>}
             <span className="muted small"> (đóng góp {r.contribution.toFixed(2)})</span>
           </li>
         ))}

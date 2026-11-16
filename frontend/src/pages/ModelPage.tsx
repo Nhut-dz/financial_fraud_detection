@@ -1,4 +1,4 @@
-import { pct } from '../api'
+import { featureDisplayName, pct } from '../api'
 import type { BudgetRow, ModelReport } from '../api'
 
 function Metric({ label, value, note }: { label: string; value: string; note?: string }) {
@@ -98,7 +98,7 @@ export default function ModelPage({ report }: { report: ModelReport | null }) {
         <div className="bars">
           {Object.entries(report.feature_importance).map(([k, val]) => (
             <div key={k} className="bar-row">
-              <span className="bar-label">{k}</span>
+              <span className="bar-label" title={k}>{featureDisplayName(k)}</span>
               <div className="bar-track"><div className="bar-fill" style={{ width: `${(val / maxImp) * 100}%` }} /></div>
               <span className="num small">{val.toFixed(3)}</span>
             </div>

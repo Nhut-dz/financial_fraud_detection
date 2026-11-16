@@ -142,3 +142,31 @@ export const api = {
 
 export const pct = (x: number, digits = 1) => `${(x * 100).toFixed(digits)}%`
 export const money = (x: number) => `$${x.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+
+export const CATEGORY_VI: Record<string, string> = {
+  entertainment: 'Giải trí',
+  food_dining: 'Ăn uống',
+  gas_transport: 'Xăng dầu, di chuyển',
+  grocery_net: 'Tạp hóa online',
+  grocery_pos: 'Tạp hóa tại cửa hàng',
+  health_fitness: 'Sức khỏe, thể hình',
+  home: 'Nhà cửa',
+  kids_pets: 'Trẻ em, thú cưng',
+  misc_net: 'Khác online',
+  misc_pos: 'Khác tại cửa hàng',
+  personal_care: 'Chăm sóc cá nhân',
+  shopping_net: 'Mua sắm online',
+  shopping_pos: 'Mua sắm tại cửa hàng',
+  travel: 'Du lịch',
+}
+
+/** "Giải trí (entertainment)"; giữ nguyên mã nếu chưa có bản dịch */
+export function categoryLabel(code: string): string {
+  const vi = CATEGORY_VI[code]
+  return vi ? `${vi} (${code})` : code
+}
+
+/** Tên đặc trưng one-hot loại dịch vụ (cat_xxx) → "Dịch vụ: Giải trí (entertainment)" */
+export function featureDisplayName(feature: string, fallback = feature): string {
+  return feature.startsWith('cat_') ? `Dịch vụ: ${categoryLabel(feature.slice(4))}` : fallback
+}
