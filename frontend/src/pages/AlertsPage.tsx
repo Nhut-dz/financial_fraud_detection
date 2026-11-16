@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
-import { api, money, pct } from '../api'
+import { api, categoryLabel, money, pct } from '../api'
 import type { RiskLevel, Transaction } from '../api'
 import { ErrorBox, Label, ReasonList, RiskBadge } from '../components'
 
@@ -45,7 +45,7 @@ export default function AlertsPage() {
                       <td>{t.trans_time}</td>
                       <td>{t.cc_num}</td>
                       <td className="num">{money(t.amt)}</td>
-                      <td>{t.category}</td>
+                      <td>{categoryLabel(t.category)}</td>
                       <td className="num">{t.fraud_score !== null ? pct(t.fraud_score, 2) : '—'}</td>
                       <td className="num">{t.anomaly_score !== null ? pct(t.anomaly_score) : '—'}</td>
                       <td><RiskBadge level={t.risk_level} /></td>

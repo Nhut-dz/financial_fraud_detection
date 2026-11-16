@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
-import { api, money, pct } from '../api'
+import { api, categoryLabel, money, pct } from '../api'
 import type { CardResponse, ModelReport, ScoreResponse, Transaction } from '../api'
 import { ErrorBox, Label, ReasonList, RiskBadge, ScoreBar } from '../components'
 
@@ -125,7 +125,7 @@ export default function ScorePage({ categories, report }: { categories: string[]
           <label>Loại dịch vụ
             <select required value={form.category} onChange={(e) => set('category', e.target.value)}>
               <option value="" disabled>Chọn…</option>
-              {categories.map((c) => <option key={c} value={c}>{c}</option>)}
+              {categories.map((c) => <option key={c} value={c}>{categoryLabel(c)}</option>)}
             </select>
           </label>
           <label>Vĩ độ merchant<input required type="number" step="any" value={form.merch_lat} onChange={(e) => set('merch_lat', e.target.value)} /></label>
@@ -181,7 +181,7 @@ export default function ScorePage({ categories, report }: { categories: string[]
                   <tr key={t.trans_num}>
                     <td>{t.trans_time}</td>
                     <td className="num">{money(t.amt)}</td>
-                    <td>{t.category}</td>
+                    <td>{categoryLabel(t.category)}</td>
                     <td>{t.source}</td>
                     <td><RiskBadge level={t.risk_level} /></td>
                     <td><Label isFraud={t.is_fraud} /></td>

@@ -35,6 +35,7 @@ code { font-size: 12px; }
 @media (max-width: 860px) {
   .grid-2 { grid-template-columns: 1fr; }
   .span-2 { grid-column: auto; }
+  .bar-row { grid-template-columns: 140px 1fr 44px; }
 }
 
 .row { display: flex; align-items: center; }
@@ -92,7 +93,7 @@ input, select { font: inherit; font-size: 13px; padding: 6px 8px; border: 1px so
 .metric-value { font-size: 22px; font-weight: 700; }
 
 .bars { display: flex; flex-direction: column; gap: 6px; }
-.bar-row { display: grid; grid-template-columns: 180px 1fr 50px; gap: 8px; align-items: center; font-size: 12px; }
+.bar-row { display: grid; grid-template-columns: 300px 1fr 50px; gap: 8px; align-items: center; font-size: 12px; }
 .bar-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bar-track { height: 10px; background: #eef0f3; border-radius: 5px; }
 .bar-fill { height: 100%; background: var(--accent); border-radius: 5px; }
